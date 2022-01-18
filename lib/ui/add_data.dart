@@ -23,36 +23,40 @@ class _AddDataProductState extends State<AddDataProduct> {
             priceController.text, stokController.text, imageController.text)
         .then((value) {
       setState(() {
-        if (value) {
-          Alert(
-              context: context,
-              title: 'success!',
-              desc: 'data berhasil ditambah',
-              type: AlertType.success,
-              buttons: [
-                DialogButton(
-                    child: const Text('OK'),
-                    onPressed: () {
-                      Navigator.pushNamedAndRemoveUntil(
-                          context, '/home', ModalRoute.withName('/add'));
-                    })
-              ]).show();
-        } else {
-          Alert(
-              context: context,
-              title: 'gagal!',
-              desc: 'terjadi kesalahan',
-              type: AlertType.error,
-              buttons: [
-                DialogButton(
-                    child: const Text('OK'),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    })
-              ]).show();
-        }
+        alertAdd(value);
       });
     });
+  }
+
+  void alertAdd(value) {
+    if (value) {
+      Alert(
+          context: context,
+          title: 'success!',
+          desc: 'data berhasil ditambah',
+          type: AlertType.success,
+          buttons: [
+            DialogButton(
+                child: const Text('OK'),
+                onPressed: () {
+                  Navigator.pushNamedAndRemoveUntil(
+                      context, '/home', ModalRoute.withName('/add'));
+                })
+          ]).show();
+    } else {
+      Alert(
+          context: context,
+          title: 'gagal!',
+          desc: 'terjadi kesalahan',
+          type: AlertType.error,
+          buttons: [
+            DialogButton(
+                child: const Text('OK'),
+                onPressed: () {
+                  Navigator.pop(context);
+                })
+          ]).show();
+    }
   }
 
   @override
